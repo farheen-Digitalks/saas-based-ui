@@ -25,12 +25,20 @@ export default function LoginPage() {
 //     }
 //   }
 
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault(); // 🔥 THIS FIXES EVERYTHING
+
+  await login({ email, password });
+};
+
   return (
-    <form className="bg-white p-8 rounded shadow w-80">
-      <h2 className="text-xl font-bold mb-4">Login</h2>
+    <form onSubmit={handleSubmit} className="bg-white/10 p-10 rounded shadow w-80">
+      <h2 className="text-xl text-white/45 text-center font-bold mb-6">
+        Login
+      </h2>
       <input
         name="email"
-        className="border p-2 w-full mb-3"
+        className="border border-white/15 focus:outline-none p-2 w-full mb-3"
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -38,14 +46,14 @@ export default function LoginPage() {
       <input
         type="password"
         name="password"
-        className="border p-2 w-full mb-3"
+        className="border border-white/15 focus:outline-none p-2 w-full mb-3"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
         required
       />
       <button
         className="bg-blue-600 text-white w-full py-2"
-        onClick={() => login({ email, password })}
+        type="submit"
       >
         Login
       </button>
