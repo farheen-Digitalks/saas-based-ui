@@ -15,8 +15,7 @@ type AuthContextType = {
   user: User | null;
   loading: boolean;
   login: (data: any) => Promise<void>;
-  register: (data: any) => Promise<void>;
-  logout: () => Promise<void>;
+  logout: () => void;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -27,68 +26,47 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   /**
-   * 🔁 Called ONLY when user is null (refresh / direct access)
+   * 🔁 RESTORE SESSION ON REFRESH
    */
-  const fetchUser = async () => {
-    try {
-      const res = await api.get("/auth/me");
-      setUser(res.data.user);
-    } catch {
-      setUser(null);
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const storedUser = localStorage.getItem("authUser");
+
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
     }
-  };
+
+    setLoading(false);
+  }, []);
 
   /**
    * ✅ LOGIN
-   * - Uses login response user
-   * - DOES NOT call /auth/me
    */
   const login = async (data: any) => {
     const res = await api.post("/platformUser/login", data);
-    console.log("Login response", res);
 
-    localStorage.setItem("token", res.data.token); // 🔥 MISSING
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("authUser", JSON.stringify(res.data.user));
     setUser(res.data.user);
-
-    // setUser(res.data.user); // immediate state
-    setLoading(false);
 
     router.push("/dashboard");
   };
 
   /**
-   * ✅ REGISTER
-   */
-  const register = async (data: any) => {
-    await api.post("/register", data);
-    router.push("/login");
-  };
-
-  /**
    * ✅ LOGOUT
    */
-  const logout = async () => {
-    await api.post("/logout"); // clears cookies
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("authUser");
+
+    setAuthToken(null);
     setUser(null);
+
     router.push("/login");
   };
 
-  /**
-   * 🔥 IMPORTANT FIX
-   * Call /auth/me ONLY if user is null
-   */
-  useEffect(() => {
-    // if (!user) {
-    //   fetchUser();
-    // } else {
-    //   setLoading(false);
-    // }
-  }, []);
-
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
