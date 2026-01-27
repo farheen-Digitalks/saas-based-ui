@@ -16,7 +16,7 @@ export const getEmployees = async (): Promise<Employee[]> => {
   try {
     const res = await api.get<Employee[]>(Endpoints.EMPLOYEES);
     console.log("Response", res.data);
-    return res.data;
+    return res.data?.data;
   } catch (err) {
     console.error("Error fetching employees:", err);
     throw err; // let caller handle the error

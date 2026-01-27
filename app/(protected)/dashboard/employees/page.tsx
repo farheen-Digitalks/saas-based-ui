@@ -57,7 +57,7 @@ export default function EmployeesPage() {
                 <td className="px-4 py-2">{index + 1}</td>
                 <td className="px-4 py-2">{emp.name}</td>
                 <td className="px-4 py-2">{emp.email}</td>
-                <td className="px-4 py-2">{emp.role}</td>
+                <td className="px-4 py-2">{emp.role?.name}</td>
               </tr>
             ))}
             {employees.length === 0 && (
