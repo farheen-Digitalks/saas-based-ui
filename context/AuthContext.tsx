@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import api from "@/app/services/api";
 
 type User = {
@@ -47,6 +48,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("authUser", JSON.stringify(res.data.user));
+    Cookies.set("token", res.data.token);
+    
     setUser(res.data.user);
 
     router.push("/dashboard");
@@ -58,9 +61,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("authUser");
+    Cookies.remove("token");
 
-    setAuthToken(null);
-    setUser(null);
 
     router.push("/login");
   };
