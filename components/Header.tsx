@@ -6,7 +6,7 @@ export default function Header() {
   const { user, logout } = useAuth();
 
   return (
-    <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
+    <header className="bg-white px-6 py-4 flex items-center justify-between">
       {/* Left: greeting */}
       <div>
         <h1 className="text-2xl text-gray-600 font-semibold">

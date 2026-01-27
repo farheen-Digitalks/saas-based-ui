@@ -69,7 +69,7 @@ export default function Sidebar({
       {/* Top: logo + collapse button */}
       <div className="mb-8 border-b pb-4 flex items-center justify-between">
         <div className="flex items-center">
-          <span className="mr-2">🛠</span>
+          <span className="mr-2 text-gray-600">🛠</span>
           <span
             className={`
               text-xl font-bold text-black

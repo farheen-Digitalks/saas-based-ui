@@ -43,52 +43,89 @@ export default function AdminDashboardPage() {
         />
       </div>
 
-      {/* Analytics graph */}
-      <div className="bg-white rounded-xl shadow p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg text-gray-600 font-medium">
-            Analytics Overview
-          </h2>
-          <select className="border border-gray-300 rounded-md text-sm text-gray-600 px-2 py-1">
-            <option>Last 6 months</option>
-            <option>Last 12 months</option>
-          </select>
-        </div>
-
-        <div className="text-sm text-gray-500 mb-4">
-          Employee and project growth over time.
-        </div>
-
-        {/* Very simple inline chart – placeholder for real chart lib */}
-        <div className="w-full h-56 bg-gray-50 rounded-lg flex items-end px-4 gap-4">
-          {mockMonthlyData.map((item) => (
-            <div key={item.month} className="flex-1 flex flex-col items-center">
-              {/* fixed bar area */}
-              <div className="h-40 flex items-end gap-1 w-full justify-center">
-                <div
-                  className="w-4 rounded-t bg-blue-500"
-                  style={{ height: `${item.employees}px` }} // or scale as needed
-                  title={`Employees: ${item.employees}`}
-                />
-                <div
-                  className="w-4 rounded-t bg-emerald-500"
-                  style={{ height: `${item.projects * 8}px` }}
-                  title={`Projects: ${item.projects}`}
-                />
-              </div>
-              <span className="mt-2 text-xs text-gray-500">{item.month}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="flex justify-end gap-4 mt-3 text-xs text-gray-500">
-          <div className="flex items-center gap-1">
-            <span className="inline-block w-3 h-3 rounded-sm bg-blue-500" />
-            Employees
+      {/* Analytics section: two graphs side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Employees graph */}
+        <div className="bg-white rounded-xl shadow p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg text-gray-600 font-medium">
+              Employees Performance
+            </h2>
+            <select className="border border-gray-300 rounded-md text-sm text-gray-600 px-2 py-1">
+              <option>Last 6 months</option>
+              <option>Last 12 months</option>
+            </select>
           </div>
-          <div className="flex items-center gap-1">
-            <span className="inline-block w-3 h-3 rounded-sm bg-emerald-500" />
-            Projects
+
+          <div className="text-sm text-gray-500 mb-4">
+            Employee performance trend over time.
+          </div>
+
+          <div className="w-full h-56 bg-gray-50 rounded-lg flex items-end px-4 gap-4">
+            {mockMonthlyData.map((item) => (
+              <div
+                key={item.month}
+                className="flex-1 flex flex-col items-center"
+              >
+                <div className="h-40 flex items-end w-full justify-center">
+                  <div
+                    className="w-6 rounded-t bg-blue-500"
+                    style={{ height: `${item.employees / 2}px` }}
+                    title={`Employees: ${item.employees}`}
+                  />
+                </div>
+                <span className="mt-2 text-xs text-gray-500">{item.month}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-end gap-4 mt-3 text-xs text-gray-500">
+            <div className="flex items-center gap-1">
+              <span className="inline-block w-3 h-3 rounded-sm bg-blue-500" />
+              Employees
+            </div>
+          </div>
+        </div>
+
+        {/* Projects graph */}
+        <div className="bg-white rounded-xl shadow p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg text-gray-600 font-medium">
+              Projects Overview
+            </h2>
+            <select className="border border-gray-300 rounded-md text-sm text-gray-600 px-2 py-1">
+              <option>Last 6 months</option>
+              <option>Last 12 months</option>
+            </select>
+          </div>
+
+          <div className="text-sm text-gray-500 mb-4">
+            Active projects count over time.
+          </div>
+
+          <div className="w-full h-56 bg-gray-50 rounded-lg flex items-end px-4 gap-4">
+            {mockMonthlyData.map((item) => (
+              <div
+                key={item.month}
+                className="flex-1 flex flex-col items-center"
+              >
+                <div className="h-40 flex items-end w-full justify-center">
+                  <div
+                    className="w-6 rounded-t bg-emerald-500"
+                    style={{ height: `${item.projects * 10}px` }}
+                    title={`Projects: ${item.projects}`}
+                  />
+                </div>
+                <span className="mt-2 text-xs text-gray-500">{item.month}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-end gap-4 mt-3 text-xs text-gray-500">
+            <div className="flex items-center gap-1">
+              <span className="inline-block w-3 h-3 rounded-sm bg-emerald-500" />
+              Projects
+            </div>
           </div>
         </div>
       </div>
