@@ -5,17 +5,21 @@ import {
   getPermissions,
   type Permission,
 } from "@/app/services/permission";
+import AddPermissionForm from "@/components/PermissionForm";
 import { useEffect, useState } from "react";
 
 export default function PermissionsPage() {
   const [permissions, setPermissions] = useState<Permission[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showForm, setShowForm] = useState(false);
+
 
   useEffect(() => {
     async function load() {
       try {
         const data = await getPermissions();
+        console.log("Permission", data);
         setPermissions(data);
       } catch (err: unknown) {
         const errorMessage =
@@ -27,6 +31,12 @@ export default function PermissionsPage() {
     }
     load();
   }, []);
+
+  const handleCreated = (perm: Permission) => {
+    // console.log("Created permission:", perm);
+    setPermissions((prev) => [perm, ...prev]);
+    setShowForm(false);
+  };
 
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this permission?")) return;
@@ -50,17 +60,27 @@ export default function PermissionsPage() {
   }
 
   return (
-    <div className="space-y-4 p-4">
+    <div className="space-y-4 p-4 bg-white">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold text-gray-800">
           Permissions ({permissions.length})
         </h1>
 
         {/* Placeholder button – wire to a modal or form page */}
-        <button className="bg-blue-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700">
+        <button
+          className="bg-blue-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700"
+          onClick={() => setShowForm(true)}
+        >
           + Add Permission
         </button>
       </div>
+
+      {showForm && (
+        <AddPermissionForm
+          onCancel={() => setShowForm(false)}
+          onCreated={handleCreated}
+        />
+      )}
 
       <div className="overflow-x-auto bg-white shadow rounded-lg">
         <table className="min-w-full text-sm text-left text-gray-700">
@@ -82,10 +102,10 @@ export default function PermissionsPage() {
                 <td className="px-4 py-2">{index + 1}</td>
                 <td className="px-4 py-2">{perm.name}</td>
                 <td className="px-4 py-2">{perm.module}</td>
-                <td className="px-4 py-2">{perm.action.create ? "✅" : "—"}</td>
-                <td className="px-4 py-2">{perm.action.read ? "✅" : "—"}</td>
-                <td className="px-4 py-2">{perm.action.update ? "✅" : "—"}</td>
-                <td className="px-4 py-2">{perm.action.delete ? "✅" : "—"}</td>
+                <td className="px-4 py-2">{perm.action?.create ? "✅" : "—"}</td>
+                <td className="px-4 py-2">{perm.action?.read ? "✅" : "—"}</td>
+                <td className="px-4 py-2">{perm.action?.update ? "✅" : "—"}</td>
+                <td className="px-4 py-2">{perm.action?.delete ? "✅" : "—"}</td>
                 <td className="px-4 py-2 space-x-2">
                   <button className="text-blue-600 text-xs hover:underline">
                     Edit

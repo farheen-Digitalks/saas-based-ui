@@ -24,7 +24,6 @@ export type CreatePermission = {
   module: string;
   action: PermissionAction;
   description?: string;
-  companyId: string;
 };
 
 export type UpdatePermissionDto = Partial<CreatePermission>;
