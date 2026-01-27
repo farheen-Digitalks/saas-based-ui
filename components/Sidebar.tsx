@@ -34,6 +34,7 @@ export default function Sidebar({
   const navItemsSettings = [
     { href: "/dashboard/analytics", label: "Analytics", icon: "📈" },
     { href: "/dashboard/settings", label: "Settings", icon: "⚙️" },
+    { href: "/dashboard/permission", label: "Permission", icon: ""},
   ];
 
   const renderLink = (item: { href: string; label: string; icon: string }) => {
