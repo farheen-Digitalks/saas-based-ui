@@ -14,7 +14,7 @@ export type Employee = {
 
 export const getEmployees = async (): Promise<Employee[]> => {
   try {
-    const res = await api.get<Employee[]>(Endpoints.GET_EMPLOYEES);
+    const res = await api.get<Employee[]>(Endpoints.EMPLOYEES);
     console.log("Response", res.data);
     return res.data;
   } catch (err) {
