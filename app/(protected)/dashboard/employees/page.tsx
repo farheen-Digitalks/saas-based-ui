@@ -13,8 +13,10 @@ export default function EmployeesPage() {
       try {
         const resp = await getEmployees();
         setEmployees(resp);
-      } catch (e: any) {
-        setError(e?.message || "Failed to load employees");
+      } catch (e: unknown) {
+        const error =
+          e instanceof Error ? e.message : "Failed to load permissions";
+        setError(error);
       } finally {
         setLoading(false);
       }
