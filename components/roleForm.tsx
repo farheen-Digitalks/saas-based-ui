@@ -37,7 +37,6 @@ export default function AddRoleForm({ onCancel, onCreated }: Props) {
         name: name.trim(),
         permissions: permissionIds,
         description: description.trim() || undefined,
-        companyId: "YOUR_COMPANY_ID_HERE", // or take from auth/user context
         isActive,
       });
       onCreated(role);
@@ -76,21 +75,21 @@ export default function AddRoleForm({ onCancel, onCreated }: Props) {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Permissions (IDs, comma‑separated)
+          Permissions
         </label>
         <input
           type="text"
           className="w-full border rounded-md px-3 py-2 text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={permissions}
           onChange={(e) => setPermissions(e.target.value)}
-          placeholder="permId1, permId2, ..."
+          placeholder="permissions"
           required
         />
       </div>
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Active
+          Action
         </label>
         <label className="inline-flex items-center gap-2 text-sm">
           <input
@@ -107,7 +106,7 @@ export default function AddRoleForm({ onCancel, onCreated }: Props) {
 
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">
-          Description (optional)
+          Description
         </label>
         <textarea
           className="w-full border rounded-md px-3 py-2 text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
