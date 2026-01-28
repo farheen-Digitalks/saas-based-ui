@@ -5,7 +5,7 @@ import {
   getPermissions,
   type Permission,
 } from "@/app/services/permission";
-import AddPermissionForm from "@/components/PermissionForm";
+import AddPermissionForm from "@/components/dashboard/PermissionForm";
 import { useEffect, useState } from "react";
 
 export default function PermissionsPage() {

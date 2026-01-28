@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getRoles, deleteRole, type Role } from "@/app/services/role";
-import AddRoleForm from "@/components/roleForm";
+import AddRoleForm from "@/components/dashboard/roleForm";
 
 export default function RolePage() {
   const [roles, setRoles] = useState<Role[]>([]);

@@ -1,4 +1,3 @@
-// app/services/role.ts
 import { Endpoints } from "../API/configApi";
 import api from "./api";
 

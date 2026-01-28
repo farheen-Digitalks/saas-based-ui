@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/context/AuthContext";
-import StatCard from "@/components/StatCard";
+import StatCard from "@/components/dashboard/StatCard";
 import { getUserFromLocalStorage } from "@/utils/getAuthUser";
 import { Stats } from "@/app/lib/Stats";
 

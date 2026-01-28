@@ -14,23 +14,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Admin Panel",
-  description: "Admin dashboard built with Next.js and Tailwind CSS",
-  // In Next 13+ app router, viewport is usually set in a separate export,
-  // but this keeps the important bits together conceptually.
+  title: "YourHR – Smart HRMS SaaS",
+  description: "Modern HRMS platform for teams and businesses",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <head>
-        {/* Ensure responsive behavior on mobile */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gray-100`}
       >
