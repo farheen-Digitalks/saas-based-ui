@@ -24,7 +24,7 @@ export default function CTA() {
           </Link>
 
           <Link
-            href="/plans"
+            href="#plans"
             className="rounded-lg border border-white/30 px-6 py-3 font-medium hover:bg-white/10 transition"
           >
             See plans
