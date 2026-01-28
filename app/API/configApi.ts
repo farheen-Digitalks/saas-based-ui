@@ -6,4 +6,5 @@ export const Endpoints = {
   CREATE_EMPLOYEE: "/users/create-user",
 
   PERMISSION: "/permission",
+  ROLES: "/role",
 };
