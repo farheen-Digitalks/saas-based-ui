@@ -10,8 +10,8 @@ export default function Home() {
       {/* <Navbar /> */}
       <Hero />
       <Features />
-      <Pricing />
       <CTA />
+      <Pricing />
     </div>
   );
 }
