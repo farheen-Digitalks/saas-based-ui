@@ -18,7 +18,6 @@ export type CreateRoleDto = {
   permissions: string[]; // permission ids
   description?: string;
   isActive?: boolean;
-  companyId: string;
 };
 
 export type UpdateRoleDto = Partial<CreateRoleDto>;
@@ -26,7 +25,7 @@ export type UpdateRoleDto = Partial<CreateRoleDto>;
 export const getRoles = async (): Promise<Role[]> => {
   try {
     const res = await api.get<Role[]>(Endpoints.ROLES);
-    return res.data;
+    return res.data?.data;
   } catch (err: unknown) {
     const error = err instanceof Error ? err.message : "Failed to load roles";
     throw new Error(error);
