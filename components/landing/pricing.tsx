@@ -1,3 +1,5 @@
+import { Link } from "lucide-react";
+
 const plans = [
   {
     name: "Free",
@@ -49,9 +51,9 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <button className="w-full py-3 rounded-xl bg-blue-600 text-white">
+              <Link href="request-trial" className="w-full py-3 rounded-xl bg-blue-600 text-white">
                 {plan.cta}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
