@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -17,6 +18,7 @@ export default function Sidebar({
   onToggleCollapse,
 }: SidebarProps) {
   const pathname = usePathname();
+  const { user, logout } = useAuth();
 
   const linkBase =
     "flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors";
@@ -136,7 +138,16 @@ export default function Sidebar({
         </div>
       </nav>
 
-      <div className="mt-8 pt-4 border-t text-xs text-gray-400">
+      <div>
+        <button
+          onClick={logout}
+          className="bg-red-500 text-white px-4 py-2 rounded-md text-sm hover:bg-red-600"
+        >
+          Logout
+        </button>
+      </div>
+
+      <div className="mt-4 pt-4 border-t text-xs text-gray-400">
         {!isCollapsed && (
           <>
             <p>Logged in as</p>
