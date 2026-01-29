@@ -1,5 +1,5 @@
 export const Endpoints = {
-  LOGIN: "/api/auth/login",
+  LOGIN: "/platformUser/login",
   REGISTER: "/api/auth/register",
 
   EMPLOYEES: "/platformUser",

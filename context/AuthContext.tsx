@@ -4,6 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import api from "@/app/services/api";
+import { LoginCred, loginUser } from "@/app/services/authService";
 
 type User = {
   _id: string;
@@ -43,17 +44,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   /**
    * ✅ LOGIN
    */
-  const login = async (data: any) => {
-    const res = await api.post("/platformUser/login", data);
-    console.log("Login data", res.data);
+  const login = async (data: LoginCred) => {
+    const res = await loginUser(data);
+    console.log("Login data", res);
 
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("authUser", JSON.stringify(res.data.user));
-    Cookies.set("token", res.data.token);
+    localStorage.setItem("token", res.token);
+    localStorage.setItem("authUser", JSON.stringify(res.user));
+    Cookies.set("token", res.token);
 
-    setUser(res.data.user);
+    setUser(res.user);
 
-    if (res.data.user?.isSuperAdmin) {
+    if (res.user?.isSuperAdmin) {
       router.push("/superadmin");
     } else {
       router.push("/dashboard");
