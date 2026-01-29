@@ -36,7 +36,7 @@ export const createTrialRequest = async (
 export const getTrialRequests = async (): Promise<Trial[]> => {
   try {
     const res = await api.get<Trial[]>(Endpoints.GET_REQUEST);
-    return res.data;
+    return res.data?.requests;
   } catch (err) {
     throw new Error(
       err instanceof Error ? err.message : "Failed to load trial requests",

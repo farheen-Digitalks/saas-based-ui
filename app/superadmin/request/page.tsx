@@ -9,11 +9,14 @@ export default function Request() {
 
   useEffect(() => {
     async function load() {
-      try{
+      try {
         const trial = await getTrialRequests();
+        // console.log("Trial", trial);
         setRequest(trial);
-      }catch(err){
-        setError(err instanceof Error ? err.message : "Failed to get trial data");
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : "Failed to get trial data",
+        );
       }
     }
     load();
@@ -54,8 +57,8 @@ export default function Request() {
 
           <tbody>
             {requests.map((req) => (
-              <tr key={req._id} className="border-b text-sm">
-                <td className="py-3 font-medium text-gray-800">{req.name}</td>
+              <tr key={req._id} className="border-b text-sm text-gray-600">
+                <td className="py-3 font-medium">{req.name}</td>
                 <td>{req.email}</td>
                 <td>{req.company_name}</td>
                 <td>
