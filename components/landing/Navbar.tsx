@@ -27,7 +27,7 @@ export default function Navbar() {
         {/* ACTIONS */}
         <div className="flex items-center gap-4">
           <Link
-            href="/auth/login"
+            href="/login"
             className="text-sm font-medium text-gray-600 hover:text-gray-900"
           >
             Login
