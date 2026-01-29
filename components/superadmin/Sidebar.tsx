@@ -25,9 +25,9 @@ export default function Sidebar({
 
   const widthClass = isCollapsed ? "md:w-20" : "md:w-64";
 
-  const navItemsMain = [{ href: "/dashboard", label: "Dashboard", icon: "📊" }];
+  const navItemsMain = [{ href: "/superadmin", label: "Dashboard", icon: "📊" }];
   const navItemsManagement = [
-    { href: "/superadmin/requests", label: "Requests", icon: "👥" },
+    { href: "/superadmin/request", label: "Requests", icon: "👥" },
     { href: "/superadmin/clients", label: "Clients", icon: "🏢" },
     { href: "/superadmin/projects", label: "Projects", icon: "📁" },
   ];
@@ -136,7 +136,7 @@ export default function Sidebar({
         </div>
       </nav>
 
-      <div className="mt-8 pt-4 border-t text-xs text-gray-400">
+      <div className="mt-4 pt-4 border-t text-xs text-gray-400">
         {!isCollapsed && (
           <>
             <p>Logged in as</p>

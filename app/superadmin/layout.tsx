@@ -12,7 +12,7 @@ export default function SuperadminLayout({
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar
         isMobileOpen={isMobileOpen}
         isCollapsed={isCollapsed}
