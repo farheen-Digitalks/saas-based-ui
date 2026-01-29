@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import api from "@/app/services/api";
 import { LoginCred, loginUser } from "@/app/services/authService";
+import { Endpoints } from "@/app/API/configApi";
 
 type User = {
   _id: string;
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     localStorage.setItem("token", res.token);
     localStorage.setItem("authUser", JSON.stringify(res.user));
-    Cookies.set("token", res.token);
+    // Cookies.set("token", res.token);
 
     setUser(res.user);
 
@@ -65,11 +66,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   /**
    * ✅ LOGOUT
    */
-  const logout = () => {
+  const logout = async () => {
+    await api.post(Endpoints.LOGOUT, {}, { withCredentials: true });
+
     localStorage.removeItem("token");
     localStorage.removeItem("authUser");
-    Cookies.remove("token");
-    Cookies.remove("authUser");
 
     router.push("/login");
   };
