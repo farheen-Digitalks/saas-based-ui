@@ -121,7 +121,7 @@ export default function RequestTrial() {
                     Company Name
                   </label>
                   <input
-                    name="company"
+                    name="company_name"
                     value={form.company_name}
                     onChange={handleChange}
                     placeholder="Acme Corp"
