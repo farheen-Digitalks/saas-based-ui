@@ -4,7 +4,8 @@ import api from "../api";
 export type CreateTrial = {
   name: string;
   email: string;
-  company: string;
+  company_name: string;
+  company_email: string;
   message: string;
 };
 
@@ -12,7 +13,8 @@ export type Trial = {
   _id: string;
   name: string;
   email: string;
-  company: string;
+  company_name: string;
+  company_email: string;
   message: string;
   createdAt?: string;
   updatedAt?: string;

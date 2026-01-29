@@ -8,7 +8,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
         {/* LOGO */}
         <Link href="/" className="text-xl font-bold text-gray-900">
-          YourHR
+          YourHRMS
         </Link>
 
         {/* NAV LINKS */}
