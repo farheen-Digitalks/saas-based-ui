@@ -9,4 +9,5 @@ export const Endpoints = {
   PERMISSION: "/permission",
   ROLES: "/role",
   REQUEST_TRIAL: "/trial/create-trial",
+  GET_REQUEST: "/trial"
 };

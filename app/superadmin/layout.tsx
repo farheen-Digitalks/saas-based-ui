@@ -19,7 +19,7 @@ export default function SuperadminLayout({
         onCloseMobile={() => setIsMobileOpen(false)}
         onToggleCollapse={() => setIsCollapsed((prev) => !prev)}
       />
-      {children}
+      <main className="flex-1">{children}</main>
     </div>
   );
 }
