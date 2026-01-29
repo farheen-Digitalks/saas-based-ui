@@ -62,7 +62,10 @@ export default function RequestTrial() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-zinc-50 to-zinc-100 flex items-center justify-center px-4">
+    <section
+      id="request-trial"
+      className="min-h-screen bg-gradient-to-br from-zinc-50 to-zinc-100 flex items-center justify-center px-4"
+    >
       <div className="w-full max-w-4xl bg-white rounded-2xl shadow-xl p-8">
         {success ? (
           <div className="text-center">

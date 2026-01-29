@@ -26,7 +26,7 @@ export default function Hero() {
             {/* CTA BUTTONS */}
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
-                href="/request-trial"
+                href="#request-trial"
                 className="rounded-lg bg-blue-600 px-6 py-3 text-white font-medium hover:bg-blue-700 transition"
               >
                 Request Free Trial

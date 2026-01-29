@@ -12,32 +12,38 @@ export default function Navbar() {
         </Link>
 
         {/* NAV LINKS */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+        <nav className="hidden md:flex items-center gap-8 text-md font-medium text-gray-600">
           <Link href="#features" className="hover:text-gray-900">
             Features
           </Link>
           <Link href="#pricing" className="hover:text-gray-900">
             Pricing
           </Link>
-          <Link href="#contact" className="hover:text-gray-900">
+          <Link href="#request-trial" className="hover:text-gray-900">
             Contact
           </Link>
         </nav>
 
         {/* ACTIONS */}
         <div className="flex items-center gap-4">
-          <Link
+          {/* <Link
             href="/login"
             className="text-sm font-medium text-gray-600 hover:text-gray-900"
           >
             Login
-          </Link>
+          </Link> */}
 
-          <Link
+          {/* <Link
             href="/request-trial"
             className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 transition"
           >
             Request Trial
+          </Link> */}
+          <Link
+            href="/login"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-md font-medium text-white hover:bg-blue-700 transition"
+          >
+            Login
           </Link>
         </div>
       </div>
