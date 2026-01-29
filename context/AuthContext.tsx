@@ -8,15 +8,16 @@ import { LoginCred, loginUser } from "@/app/services/authService";
 
 type User = {
   _id: string;
-  name: string;
-  role: string;
-  permissions: string[];
+  email: string;
+  isSuperAdmin: boolean;
+  name?: string;
+  role?: string;
 };
 
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  login: (data: any) => Promise<void>;
+  login: (data: LoginCred) => Promise<void>;
   logout: () => void;
 };
 
