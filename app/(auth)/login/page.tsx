@@ -32,13 +32,14 @@ const handleSubmit = async (e: React.FormEvent) => {
 };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white/10 p-10 rounded shadow w-80">
-      <h2 className="text-xl text-white/45 text-center font-bold mb-6">
+    <div className="w-sm h-100 bg-white/15 shadow">
+    <form onSubmit={handleSubmit} className="p-10 rounded w-80 mx-auto">
+      <h2 className="text-2xl text-white/45 text-center font-bold mb-10">
         Login
       </h2>
       <input
         name="email"
-        className="border border-white/15 focus:outline-none p-2 w-full mb-3"
+        className="border border-white/15 focus:outline-none p-2 w-full mt-6 mb-2"
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -46,17 +47,18 @@ const handleSubmit = async (e: React.FormEvent) => {
       <input
         type="password"
         name="password"
-        className="border border-white/15 focus:outline-none p-2 w-full mb-3"
+        className="border border-white/15 focus:outline-none p-2 w-full mb-4"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
         required
       />
       <button
-        className="bg-blue-600 text-white w-full py-2"
+        className="bg-blue-600 text-white w-full py-2 mt-6"
         type="submit"
       >
         Login
       </button>
     </form>
+    </div>
   );
 }

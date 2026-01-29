@@ -45,14 +45,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
    */
   const login = async (data: any) => {
     const res = await api.post("/platformUser/login", data);
+    console.log("Login data", res.data);
 
     localStorage.setItem("token", res.data.token);
     localStorage.setItem("authUser", JSON.stringify(res.data.user));
     Cookies.set("token", res.data.token);
-    
+
     setUser(res.data.user);
 
-    router.push("/dashboard");
+    if (res.data.user?.isSuperAdmin) {
+      router.push("/superadmin");
+    } else {
+      router.push("/dashboard");
+    }
   };
 
   /**
@@ -62,7 +67,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("authUser");
     Cookies.remove("token");
-
+    Cookies.remove("authUser");
 
     router.push("/login");
   };

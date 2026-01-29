@@ -1,17 +1,24 @@
+"use client";
+
 import Sidebar from "@/components/superadmin/Sidebar";
+import { useState } from "react";
 
 export default function SuperadminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-100">
-      <Sidebar isMobileOpen={false} isCollapsed={false} onCloseMobile={function (): void {
-              throw new Error("Function not implemented.");
-          } } onToggleCollapse={function (): void {
-              throw new Error("Function not implemented.");
-          } } />
+      <Sidebar
+        isMobileOpen={isMobileOpen}
+        isCollapsed={isCollapsed}
+        onCloseMobile={() => setIsMobileOpen(false)}
+        onToggleCollapse={() => setIsCollapsed((prev) => !prev)}
+      />
       {children}
     </div>
   );
