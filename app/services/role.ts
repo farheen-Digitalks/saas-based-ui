@@ -1,4 +1,4 @@
-import { Endpoints } from "../API/configApi";
+import { ApiResponse, Endpoints } from "../API/configApi";
 import api from "./api";
 
 export type Role = {
@@ -19,11 +19,15 @@ export type CreateRoleDto = {
   isActive?: boolean;
 };
 
+type RoleResponse = ApiResponse<{
+  data: Role[];
+}>;
+
 export type UpdateRoleDto = Partial<CreateRoleDto>;
 
 export const getRoles = async (): Promise<Role[]> => {
   try {
-    const res = await api.get<Role[]>(Endpoints.ROLES);
+    const res = await api.get<RoleResponse>(Endpoints.ROLES);
     return res.data?.data;
   } catch (err: unknown) {
     const error = err instanceof Error ? err.message : "Failed to load roles";
