@@ -2,12 +2,16 @@
 import { Endpoints } from "@/app/API/configApi";
 import api from "../api";
 
-// services/employee/employee.ts
+interface Role {
+  _id: string;
+  name: string;
+}
+
 export type Employee = {
   _id: string;          // from Mongo
   name: string;
   email: string;
-  role: string;         // currently role id
+  role?: Role;         // currently role id
   companyId?: string;   // optional, if you need it
 };
 

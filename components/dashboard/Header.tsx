@@ -3,7 +3,9 @@
 import { useAuth } from "@/context/AuthContext";
 
 export default function Header() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
+
+  const toggleTheme = () => {};
 
   return (
     <header className="bg-white px-6 py-4 flex items-center justify-between">
@@ -12,9 +14,7 @@ export default function Header() {
         <h1 className="text-2xl text-gray-600 font-semibold">
           Hi {user?.name ? ` ${user.name}` : ""} 👋
         </h1>
-        <p className="text-gray-500 text-sm">
-          Welcome back
-        </p>
+        <p className="text-gray-500 text-sm">Welcome back</p>
       </div>
 
       {/* Right: search + theme + profile */}
@@ -35,7 +35,7 @@ export default function Header() {
         <button
           type="button"
           className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 text-sm hover:bg-gray-100"
-          // onClick={toggleTheme}
+          onClick={toggleTheme}
         >
           🌙
         </button>
