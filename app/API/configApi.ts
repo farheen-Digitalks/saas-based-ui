@@ -11,3 +11,9 @@ export const Endpoints = {
   REQUEST_TRIAL: "/trial/create-trial",
   GET_REQUEST: "/trial"
 };
+
+export type ApiResponse<T> = {
+  success: boolean;
+  message?: string;
+} & T;
+

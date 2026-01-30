@@ -1,4 +1,4 @@
-import { Endpoints } from "@/app/API/configApi";
+import { ApiResponse, Endpoints } from "@/app/API/configApi";
 import api from "../api";
 
 export type CreateTrial = {
@@ -21,6 +21,11 @@ export type Trial = {
   updatedAt?: string;
 };
 
+type TrialRequestsResponse = ApiResponse<{
+  requests: Trial[];
+}>;
+
+
 export const createTrialRequest = async (
   payload: CreateTrial,
 ): Promise<Trial> => {
@@ -35,9 +40,9 @@ export const createTrialRequest = async (
 
 export const getTrialRequests = async (): Promise<Trial[]> => {
   try {
-    const res = await api.get<Trial[]>(Endpoints.GET_REQUEST);
-    const response = res.data;
-    return response?.requests;
+    const res = await api.get<TrialRequestsResponse>(Endpoints.GET_REQUEST);
+    console.log("Response", res);
+    return res.data?.requests;
   } catch (err) {
     throw new Error(
       err instanceof Error ? err.message : "Failed to load trial requests",

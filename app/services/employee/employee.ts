@@ -1,5 +1,5 @@
 // services/employee/employee.ts
-import { Endpoints } from "@/app/API/configApi";
+import { ApiResponse, Endpoints } from "@/app/API/configApi";
 import api from "../api";
 
 interface Role {
@@ -8,17 +8,20 @@ interface Role {
 }
 
 export type Employee = {
-  _id: string;          // from Mongo
+  _id: string; // from Mongo
   name: string;
   email: string;
-  role?: Role;         // currently role id
-  companyId?: string;   // optional, if you need it
+  role?: Role; // currently role id
+  companyId?: string; // optional, if you need it
 };
 
+type EmployeeResponse = ApiResponse<{
+  data: Employee[];
+}>;
 
 export const getEmployees = async (): Promise<Employee[]> => {
   try {
-    const res = await api.get<Employee[]>(Endpoints.EMPLOYEES);
+    const res = await api.get<EmployeeResponse>(Endpoints.EMPLOYEES);
     console.log("Response", res.data);
     return res.data?.data;
   } catch (err) {
